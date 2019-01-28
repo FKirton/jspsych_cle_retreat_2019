@@ -1,1 +1,2 @@
 # jspsych_cle_retreat_2019
+This repository contains the materials from the jsPsych workshop given at the 2019 CLE retreat. It includes the slides, images and solutions to the exercises. To run the code for the exercises in the browser, you will need to download jsPsych version 6.0.5 from the [jsPsych GitHub repository](https://github.com/jspsych/jsPsych/releases). Unzip to the same folder where you put the html files.
