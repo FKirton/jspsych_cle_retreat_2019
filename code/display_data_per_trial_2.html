@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Display Multiple Images</title>
+    <script src="jspsych-6.0.5/jspsych.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-image-button-response.js"></script>
+    <link rel="stylesheet" href="jspsych-6.0.5/css/jspsych.css" type="text/css"></link>
+  </head>
+  <body></body>
+
+  <script>
+  /*
+  - Displays multiple images using a nested timeline
+  - Collects button click responses
+  - Displays the data for each trial at the end of the experiment
+  - Adds parameter to trial data based on button pressed
+  */
+
+  // create an empty timeline
+  var my_timeline = [];
+
+  // create an array of image names (or could read from a file)
+  var images = ['images/Cat1.jpg', 'images/Cat2.jpg', 'images/Dog1.jpg', 'images/Dog2.jpg']
+
+  // create a timeline node with multiple trials
+  var trials = {
+    type: 'image-button-response',
+    choices: ['cat','dog'], // specifiy button labels
+    timeline: [ // create a nested timeline with multiple stimuli
+      {stimulus: images[0]},
+      {stimulus: images[1]},
+      {stimulus: images[2]},
+      {stimulus: images[3]}
+    ],
+    on_finish: function(data) {
+      // create a new parameter called 'choice'
+      // set it to 'cat' or 'dog' depending on which button was pressed
+      if(data.button_pressed == 0) {
+        data.choice = 'cat'
+      }
+      else {
+        data.choice = 'dog'
+      }
+      alert(JSON.stringify(data)); // display the data from the trial
+    }
+  }
+  // add the trial to the timeline
+  my_timeline.push(trials);
+
+  // run the experiment
+  jsPsych.init({
+    timeline: my_timeline
+  });
+  </script>
+</html>

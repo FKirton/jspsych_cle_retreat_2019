@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Repeat Trials</title>
+    <script src="jspsych-6.0.5/jspsych.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-image-button-response.js"></script>
+    <link rel="stylesheet" href="jspsych-6.0.5/css/jspsych.css" type="text/css"></link>
+  </head>
+  <body></body>
+
+  <script>
+  /*
+  - Displays multiple images using a nested timeline
+  - Collects button click responses
+  - Repeats each block of trials the specified number of times
+  */
+
+  // create an empty timeline
+  var my_timeline = [];
+
+  // create an array of image names (or could read from a file)
+  var images = ['images/Cat1.jpg', 'images/Cat2.jpg', 'images/Dog1.jpg', 'images/Dog2.jpg']
+
+  // create a timeline node with multiple trials
+  var trials = {
+    type: 'image-button-response',
+    choices: ['cat','dog'], // specifiy button labels
+    timeline: [ // create a nested timeline with multiple stimuli
+      {stimulus: images[0]},
+      {stimulus: images[1]},
+      {stimulus: images[2]},
+      {stimulus: images[3]}
+    ],
+    repetitions: 3
+  }
+  // add the trial to the timeline
+  my_timeline.push(trials);
+
+  // run the experiment
+  jsPsych.init({
+    timeline: my_timeline
+  });
+  </script>
+</html>

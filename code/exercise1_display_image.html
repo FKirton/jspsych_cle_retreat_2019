@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Display Image</title>
+    <script src="jspsych-6.0.5/jspsych.js"></script>
+    <script src="jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
+    <script src="exercise1_display_image.js"></script>
+    <link rel="stylesheet" href="jspsych-6.0.5/css/jspsych.css" type="text/css"></link>
+  </head>
+  <body></body>
+
+  <script>
+  /*
+  - Displays a single image using the image-keyboard-response plugin
+  - Any key press ends the trial
+  */
+
+  // create an empty timeline
+  var my_timeline = [];
+
+  // create a single trial with type image-keyboard-response
+  // to display a single image
+  var trial = {
+    type: 'image-keyboard-response',
+    stimulus: 'images/Cat1.jpg'
+  }
+  // add the trial to the timeline
+  my_timeline.push(trial);
+
+  // run the experiment
+  jsPsych.init({
+    timeline: my_timeline
+  });
+  </script>
+</html>
